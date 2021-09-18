@@ -2,12 +2,15 @@
   "name": "@zioroboco/changelog-github",
   "version": "0.1.0",
   "description": "Changelog generator based on atlassian/changelog-github",
-  "main": "dist",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/zioroboco/changelog-github.git"
   },
+  "files": [
+    "dist"
+  ],
+  "main": "dist",
   "scripts": {
     "test": "jest",
     "prepublish": "tsc"
