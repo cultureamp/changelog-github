@@ -119,15 +119,16 @@ describe.each(["author", "user"])(
 
 it("with multiple authors", async () => {
   expect(
-    await getReleaseLine(
-      ...getChangeset(
-        ["author: @Andarist", "author: @mitchellhamilton"].join("\n"),
-        data.commit
-      )
-    )
-  ).toMatchInlineSnapshot(`
-    "
-    - [#1613](https://github.com/emotion-js/emotion/pull/1613) [\`a085003\`](https://github.com/emotion-js/emotion/commit/a085003) Thanks [@Andarist](https://github.com/Andarist), [@mitchellhamilton](https://github.com/mitchellhamilton)! - something
-    "
-  `)
+await getReleaseLine(
+...getChangeset(
+["author: @Andarist", "author: @mitchellhamilton"].join("\n"),
+data.commit))).
+
+
+toMatchInlineSnapshot(`
+"
+
+- [#1613](https://github.com/emotion-js/emotion/pull/1613) [\`a085003\`](https://github.com/emotion-js/emotion/commit/a085003) Thanks [@Andarist](https://github.com/Andarist), [@mitchellhamilton](https://github.com/mitchellhamilton)! - something
+"
+`)
 })
