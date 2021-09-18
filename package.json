@@ -1,0 +1,19 @@
+{
+  "name": "@zioroboco/changelog-github",
+  "version": "0.1.0",
+  "description": "Changelog generator based on atlassian/changelog-github",
+  "main": "dist",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zioroboco/changelog-github.git"
+  },
+  "dependencies": {
+    "@changesets/get-github-info": "^0.5.0",
+    "@changesets/types": "^4.0.1",
+    "dotenv": "^8.1.0"
+  },
+  "devDependencies": {
+    "@changesets/parse": "^0.3.9",
+  }
+}
