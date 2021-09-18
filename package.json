@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/zioroboco/changelog-github.git"
   },
+  "scripts": {
+    "prepublish": "tsc"
+  },
   "dependencies": {
     "@changesets/get-github-info": "^0.5.0",
     "@changesets/types": "^4.0.1",
@@ -15,5 +18,7 @@
   },
   "devDependencies": {
     "@changesets/parse": "^0.3.9",
+    "@tsconfig/node14": "^1.0.1",
+    "typescript": "^4.4.3"
   }
 }
