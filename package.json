@@ -1,13 +1,20 @@
 {
-  "name": "@zioroboco/changelog-github",
+  "name": "@cultureamp/changelog-github",
   "version": "0.1.0",
   "description": "Changelog generator based on atlassian/changelog-github",
   "main": "dist",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zioroboco/changelog-github.git"
+    "url": "https://github.com/cultureamp/changelog-github.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "test": "jest",
     "prepublish": "tsc"
