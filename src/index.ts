@@ -49,7 +49,6 @@ const changelogFunctions: ChangelogFunctions = {
 
     let prFromSummary: number | undefined
     let commitFromSummary: string | undefined
-    let usersFromSummary: string[] = []
 
     const replacedChangelog = changeset.summary
       .replace(/^\s*(?:pr|pull|pull\s+request):\s*#?(\d+)/im, (_, pr) => {
@@ -62,7 +61,6 @@ const changelogFunctions: ChangelogFunctions = {
         return ""
       })
       .replace(/^\s*(?:author|user):\s*@?([^\s]+)/gim, (_, user) => {
-        usersFromSummary.push(user)
         return ""
       })
       .trim()
@@ -96,23 +94,12 @@ const changelogFunctions: ChangelogFunctions = {
       return {
         commit: null,
         pull: null,
-        user: null,
       }
     })()
-
-    const users = usersFromSummary.length
-      ? usersFromSummary
-          .map(
-            userFromSummary =>
-              `[@${userFromSummary}](https://github.com/${userFromSummary})`
-          )
-          .join(", ")
-      : links.user
 
     const prefix = [
       links.pull === null ? "" : ` ${links.pull}`,
       links.commit === null ? "" : ` ${links.commit}`,
-      users === null ? "" : ` Thanks ${users}!`,
     ].join("")
 
     return `\n\n-${prefix ? `${prefix} -` : ""} ${firstLine}\n${futureLines
