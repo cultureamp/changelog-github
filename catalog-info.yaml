@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: changelog-github
+  description: > # OPTIONAL: a nice multiline description here would nice
+    <DESCRIPTION>
+  tags:
+    - users-na
+    - camp-foundations
+    - data-none
+  annotations:
+    github.com/project-slug: changelog-github
+    github.com/team-slug: front-end-foundations
+spec:
+  type: library
+  owner: front-end-foundations
+  lifecycle: development
