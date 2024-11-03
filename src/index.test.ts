@@ -1,9 +1,10 @@
+import { vi, describe, test, expect, it } from "vitest"
 import changelogFunctions from "./index"
 import parse from "@changesets/parse"
 
 const getReleaseLine = changelogFunctions.getReleaseLine
 
-jest.mock(
+vi.mock(
   "@changesets/get-github-info",
   (): typeof import("@changesets/get-github-info") => {
     // this is duplicated because jest.mock reordering things

@@ -1,0 +1,25 @@
+name: "canary release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      label:
+        description: "Pick a label for the release, to be included in the version number — e.g. '1.0.0-\\${label}.x' (note: can't contain slashes!)"
+        required: true
+        type: string
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup
+      - name: "release (canary) with label: ${{ github.event.inputs.label }}"
+        run: |
+          pnpm compile
+          pnpm changeset version --snapshot "$LABEL"
+          pnpm changeset publish --tag "$LABEL"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ github.token }}
+          LABEL: ${{ github.event.inputs.label }}

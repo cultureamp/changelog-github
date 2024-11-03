@@ -1,0 +1,22 @@
+# This is a composite action (a step we can reuse in workflows)
+# https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
+
+name: Setup repository
+description: Install and build packages
+
+runs:
+  using: composite
+  steps:
+    - run: corepack enable
+      shell: bash
+    # setup node, install and cache packages
+    - uses: actions/setup-node@v3
+      with:
+        cache: pnpm
+        node-version-file: .nvmrc
+        registry-url: https://npm.pkg.github.com
+    - run: pnpm install --frozen-lockfile
+      shell: bash
+      env:
+        NODE_AUTH_TOKEN: ${{ github.token }}
+        NODE_OPTIONS: "--max-old-space-size=4096"
