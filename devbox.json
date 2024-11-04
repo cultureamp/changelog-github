@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/main/.schema/devbox.schema.json",
+  "packages": ["nodejs@20.16.0"],
+  "env": {
+    "DEVBOX_COREPACK_ENABLED": "1",
+    "npm_config_python": "/usr/bin/python3"
+  },
+  "shell": {
+    "init_hook": [
+      // keep nvmrc in sync with devbox's node version
+      "node --version | sed 's/v//' > .nvmrc"
+    ],
+    "scripts": {
+      "setup": "pnpm install"
+    }
+  }
+}
